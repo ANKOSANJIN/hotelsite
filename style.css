@@ -28,7 +28,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- НАВИГАЦИЯ --- */
+
 .navbar {
     position: fixed; top: 0; left: 0; right: 0;
     display: flex; justify-content: space-between; align-items: center;
@@ -46,7 +46,7 @@ body {
 }
 .nav-links a:hover { color: var(--accent); }
 
-/* Логотип ANKO вместо кнопки Главная */
+
 .logo {
     font-weight: 800;
     font-size: 26px;
@@ -63,7 +63,6 @@ body {
     gap: 25px;
 }
 
-/* Кнопка языка */
 .lang-dropdown { position: relative; display: inline-block; }
 .lang-btn {
     background: none;
@@ -89,7 +88,7 @@ body {
 .lang-content a { display: block; padding: 10px 20px; color: var(--text-color); text-decoration: none; text-align: center; }
 .lang-content a:hover { background-color: var(--accent); color: #fff; }
 
-/* Переключатель темы */
+
 .theme-switch { 
     position: relative; display: block; width: 50px; height: 26px; 
     background: #ccc; border-radius: 20px; cursor: pointer; margin: 0; 
@@ -107,7 +106,7 @@ input:checked + .sun-moon-icon {
 }
 [data-theme="dark"] .theme-switch { background: #444; }
 
-/* --- ГЛАВНЫЙ ЭКРАН --- */
+
 .hero {
     height: 60vh;
     display: flex;
@@ -126,7 +125,7 @@ input:checked + .sun-moon-icon {
     color: var(--accent);
 }
 
-/* --- ГАЛЕРЕЯ НОМЕРОВ --- */
+
 .gallery {
     max-width: 1200px;
     margin: 0 auto;
@@ -182,7 +181,7 @@ input:checked + .sun-moon-icon {
 .room-info h2 { font-size: 32px; margin-bottom: 20px; margin-top: 0;}
 .room-info p { line-height: 1.6; color: #777; }
 
-/* --- ФУТЕР И КНОПКА СВЯЗИ --- */
+
 .footer-zone {
     height: 300px;
     background-color: var(--footer-bg);
@@ -215,7 +214,7 @@ input:checked + .sun-moon-icon {
     filter: brightness(1.1);
 }
 
-/* --- МОДАЛЬНЫЕ ОКНА (Поп-апы) --- */
+
 .modal {
     display: none; 
     position: fixed;
@@ -309,4 +308,49 @@ input:checked + .sun-moon-icon {
     .contact-grid, .rates-container { grid-template-columns: 1fr; }
     .room-card { flex-direction: column !important; }
     .image-container { width: 100%; height: 300px; }
+}
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 15px;
+        flex-wrap: wrap; 
+        justify-content: center;
+        gap: 15px;
+    }
+    .logo { margin-right: 15px; font-size: 22px; }
+    .nav-links a { margin-right: 15px; font-size: 14px; }
+    
+
+    .hero { height: 50vh; padding-top: 100px; }
+    .hotel-name { font-size: 40px; letter-spacing: 2px; }
+    .hero p { font-size: 16px; padding: 0 20px; }
+
+
+    .room-card, .room-card:nth-child(even) {
+        flex-direction: column !important;
+        margin-bottom: 50px;
+    }
+    .image-container { height: 250px; flex: none; width: 100%; }
+    .room-info { padding: 30px 20px; flex: none; }
+    .room-info h2 { font-size: 24px; }
+
+
+    .modal-content {
+        width: 95%;
+        padding: 25px 15px;
+        max-height: 85vh; 
+        overflow-y: auto;
+    }
+    .contact-grid, .rates-container { grid-template-columns: 1fr; gap: 15px; }
+
+
+    .contact-btn { padding: 15px 30px; font-size: 16px; width: 90%; max-width: 300px; }
+}
+
+
+@media (max-width: 400px) {
+    .nav-controls { gap: 10px; }
+    .theme-switch { transform: scale(0.8); } 
+    .hotel-name { font-size: 32px; }
 }
