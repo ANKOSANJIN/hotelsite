@@ -304,53 +304,67 @@ input:checked + .sun-moon-icon {
     font-size: 15px;
 }
 
-@media (max-width: 600px) {
-    .contact-grid, .rates-container { grid-template-columns: 1fr; }
-    .room-card { flex-direction: column !important; }
-    .image-container { width: 100%; height: 300px; }
-}
 
 @media (max-width: 768px) {
-
     .navbar {
-        padding: 15px;
-        flex-wrap: wrap; 
-        justify-content: center;
+        padding: 15px 20px;
+        flex-direction: column; 
         gap: 15px;
     }
-    .logo { margin-right: 15px; font-size: 22px; }
-    .nav-links a { margin-right: 15px; font-size: 14px; }
     
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .logo { margin-right: 0; font-size: 24px; }
+    .nav-links a { margin-right: 0; font-size: 16px; }
 
-    .hero { height: 50vh; padding-top: 100px; }
-    .hotel-name { font-size: 40px; letter-spacing: 2px; }
-    .hero p { font-size: 16px; padding: 0 20px; }
+    .nav-controls {
+        justify-content: center;
+        width: 100%;
+        gap: 30px; 
+    }
 
+    .hero { 
+        height: auto; 
+        padding-top: 150px; 
+        padding-bottom: 50px; 
+    }
+    
+    .hotel-name { 
+        font-size: 11vw; 
+        letter-spacing: 2px; 
+        line-height: 1.2;
+    }
+    
+    .hero p { font-size: 16px; margin-top: 15px; padding: 0 15px; }
 
+ 
     .room-card, .room-card:nth-child(even) {
         flex-direction: column !important;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
     }
-    .image-container { height: 250px; flex: none; width: 100%; }
-    .room-info { padding: 30px 20px; flex: none; }
-    .room-info h2 { font-size: 24px; }
-
+    .image-container { height: 300px; flex: none; width: 100%; }
+    .room-info { padding: 25px 20px; flex: none; }
+    .room-info h2 { font-size: 22px; }
 
     .modal-content {
-        width: 95%;
+        width: 90%;
         padding: 25px 15px;
         max-height: 85vh; 
         overflow-y: auto;
     }
     .contact-grid, .rates-container { grid-template-columns: 1fr; gap: 15px; }
 
-
     .contact-btn { padding: 15px 30px; font-size: 16px; width: 90%; max-width: 300px; }
 }
 
-
 @media (max-width: 400px) {
-    .nav-controls { gap: 10px; }
-    .theme-switch { transform: scale(0.8); } 
-    .hotel-name { font-size: 32px; }
+    .hotel-name { font-size: 12vw; } 
+    .nav-links { gap: 10px; }
+    .nav-links a { font-size: 14px; }
 }
