@@ -1,0 +1,312 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #f4f4f4;
+    --text-color: #222;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --card-bg: #ffffff;
+    --accent: #b89356;
+    --footer-bg: #e0e0e0;
+}
+
+[data-theme="dark"] {
+    --bg-color: #0f0f0f;
+    --text-color: #e0e0e0;
+    --nav-bg: rgba(15, 15, 15, 0.95);
+    --card-bg: #1a1a1a;
+    --footer-bg: #151515;
+}
+
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    overflow-x: hidden;
+}
+
+/* --- НАВИГАЦИЯ --- */
+.navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 50px; background: var(--nav-bg);
+    z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text-color); 
+    margin-right: 25px; 
+    font-weight: 600; 
+    transition: color 0.3s; 
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* Логотип ANKO вместо кнопки Главная */
+.logo {
+    font-weight: 800;
+    font-size: 26px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    margin-right: 30px;
+    text-transform: uppercase;
+    cursor: default;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Кнопка языка */
+.lang-dropdown { position: relative; display: inline-block; }
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0;
+}
+
+.lang-content { 
+    display: none; position: absolute; top: 100%; right: 0; 
+    background: var(--card-bg); border-radius: 5px; 
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+    min-width: 60px; overflow: hidden; z-index: 2;
+}
+.lang-dropdown:hover .lang-content { display: block; }
+.lang-content a { display: block; padding: 10px 20px; color: var(--text-color); text-decoration: none; text-align: center; }
+.lang-content a:hover { background-color: var(--accent); color: #fff; }
+
+/* Переключатель темы */
+.theme-switch { 
+    position: relative; display: block; width: 50px; height: 26px; 
+    background: #ccc; border-radius: 20px; cursor: pointer; margin: 0; 
+    transition: background 0.5s;
+}
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.sun-moon-icon { 
+    position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; 
+    border-radius: 50%; background: #f1c40f; 
+    transition: transform 0.5s, background-color 0.5s, box-shadow 0.5s; 
+}
+input:checked + .sun-moon-icon { 
+    transform: translateX(24px); background: transparent; 
+    box-shadow: inset -6px -4px 0 2px #fff; 
+}
+[data-theme="dark"] .theme-switch { background: #444; }
+
+/* --- ГЛАВНЫЙ ЭКРАН --- */
+.hero {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.hotel-name {
+    font-size: 80px;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: var(--accent);
+}
+
+/* --- ГАЛЕРЕЯ НОМЕРОВ --- */
+.gallery {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.room-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.room-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.room-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.image-container {
+    flex: 1.2;
+    height: 450px;
+    position: relative;
+}
+
+.image-container img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+}
+
+.vignette {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.8) 100%);
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+.room-card.visible .vignette { opacity: 0.1; }
+
+.room-info {
+    flex: 1;
+    padding: 60px;
+}
+
+.room-info h2 { font-size: 32px; margin-bottom: 20px; margin-top: 0;}
+.room-info p { line-height: 1.6; color: #777; }
+
+/* --- ФУТЕР И КНОПКА СВЯЗИ --- */
+.footer-zone {
+    height: 300px;
+    background-color: var(--footer-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    transition: background-color 0.5s;
+}
+
+.contact-btn {
+    opacity: 0;
+    transform: scale(0.8);
+    padding: 18px 50px;
+    font-size: 20px;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact-btn.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.contact-btn:hover {
+    filter: brightness(1.1);
+}
+
+/* --- МОДАЛЬНЫЕ ОКНА (Поп-апы) --- */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7); 
+    backdrop-filter: blur(8px); 
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    transform: translateY(-30px);
+    transition: transform 0.4s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-content.large {
+    max-width: 800px;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px; top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--accent);
+}
+
+.modal h2 {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.contact-grid, .rates-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    text-align: left;
+}
+
+.contact-item h3, .rates-section h3 {
+    font-size: 18px;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.social-links a {
+    display: block;
+    color: var(--accent);
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.rates-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rates-section li {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+@media (max-width: 600px) {
+    .contact-grid, .rates-container { grid-template-columns: 1fr; }
+    .room-card { flex-direction: column !important; }
+    .image-container { width: 100%; height: 300px; }
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Horizon Hotel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <nav class="nav-links">
+            <span class="logo">ANKO</span>
+            <a href="#" id="rates-link" data-i18n="rates">Тарифы</a>
+            <a href="#" id="contacts-link" data-i18n="contacts">Контакты</a>
+        </nav>
+        
+        <div class="nav-controls">
+            <div class="lang-dropdown">
+                <button class="lang-btn" id="current-lang">RU <span>▼</span></button>
+                <div class="lang-content" id="lang-menu">
+                    <a href="#" data-lang="ru">RU</a>
+                    <a href="#" data-lang="en">EN</a>
+                    <a href="#" data-lang="it">IT</a>
+                </div>
+            </div>
+            <label class="theme-switch" aria-label="Смена темы">
+                <input type="checkbox" id="theme-toggle">
+                <div class="sun-moon-icon"></div>
+            </label>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 class="hotel-name">Grand Horizon Hotel</h1>
+        <p data-i18n="subtitle">Ваш идеальный отдых начинается здесь</p>
+    </section>
+
+    <main class="gallery" id="gallery"></main>
+
+    <footer class="footer-zone">
+        <button id="contact-btn" class="contact-btn" data-i18n="contactBtn">Связаться с нами</button>
+    </footer>
+
+    <div id="modal-contacts" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 data-i18n="contactsTitle">Наши контакты</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3 data-i18n="phone">Телефон</h3>
+                    <p>+7 (900) 123-45-67</p>
+                    <p>+7 (800) 555-35-35</p>
+                </div>
+                <div class="contact-item">
+                    <h3 data-i18n="email">Почта</h3>
+                    <p>welcome@grandhorizon.com</p>
+                </div>
+                <div class="contact-item">
+                    <h3 data-i18n="socials">Соц. сети</h3>
+                    <div class="social-links">
+                        <a href="#">Telegram</a>
+                        <a href="#">WhatsApp</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-rates" class="modal">
+        <div class="modal-content large">
+            <span class="close-modal">&times;</span>
+            <h2 data-i18n="ratesTitle">Тарифы и услуги</h2>
+            <div class="rates-container">
+                <div class="rates-section">
+                    <h3 data-i18n="rooms">Номера</h3>
+                    <ul>
+                        <li><strong>Standard:</strong> <span data-i18n="rate1">от 8 000₽ / сутки</span></li>
+                        <li><strong>Deluxe Ocean View:</strong> <span data-i18n="rate2">от 15 000₽ / сутки</span></li>
+                        <li><strong>Presidential Suite:</strong> <span data-i18n="rate3">от 45 000₽ / сутки</span></li>
+                    </ul>
+                </div>
+                <div class="rates-section">
+                    <h3 data-i18n="extra">Доп. услуги</h3>
+                    <ul>
+                        <li><strong>SPA & Wellness:</strong> <span data-i18n="inc">Включено</span></li>
+                        <li data-i18n="breakf">Завтрак "Шведский стол": 1 500₽</li>
+                        <li data-i18n="transf">Трансфер из аэропорта: Бесплатно</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
