@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // === 1. СЛОВАРЬ ПЕРЕВОДОВ ===
+
     const translations = {
         ru: {
             rates: "Тарифы", contacts: "Контакты",
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    let currentLang = 'ru'; // Язык по умолчанию
+    let currentLang = 'ru'; 
 
-    // === 2. ФУНКЦИИ ГЕНЕРАЦИИ И ПЕРЕВОДА ===
+
     const gallery = document.getElementById('gallery');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.2 });
 
     function renderGallery() {
-        gallery.innerHTML = ''; // Очищаем галерею перед перерисовкой
+        gallery.innerHTML = ''; 
         for (let i = 1; i <= 10; i++) {
             const card = document.createElement('div');
             card.className = 'room-card';
@@ -76,13 +76,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 el.textContent = translations[currentLang][key];
             }
         });
-        renderGallery(); // Перерисовываем карточки с нужным языком
+        renderGallery(); 
     }
 
-    // Инициализация при загрузке
+
     renderGallery();
 
-    // === 3. ПЕРЕКЛЮЧЕНИЕ ЯЗЫКА ===
+
     const langLinks = document.querySelectorAll('#lang-menu a');
     const langBtnText = document.getElementById('current-lang');
 
@@ -95,13 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // === 4. ПЕРЕКЛЮЧЕНИЕ ТЕМЫ ===
+
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('change', () => {
         document.documentElement.setAttribute('data-theme', themeToggle.checked ? 'dark' : 'light');
     });
 
-    // === 5. ЛОГИКА МОДАЛЬНЫХ ОКОН (без изменений) ===
     const modalContacts = document.getElementById('modal-contacts');
     const modalRates = document.getElementById('modal-rates');
     const btnContactsNav = document.getElementById('contacts-link');
@@ -125,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Кнопка в футере
     const footer = document.querySelector('.footer-zone');
     const footerObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
